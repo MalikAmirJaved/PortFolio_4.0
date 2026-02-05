@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 175 80% 50%;
+    --primary-foreground: 222 47% 6%;
+
+    --secondary: 222 40% 14%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 222 40% 14%;
+    --muted-foreground: 215 20% 55%;
+
+    --accent: 175 60% 40%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 222 40% 18%;
+    --input: 222 40% 18%;
+    --ring: 175 80% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(175 80% 50%), hsl(200 80% 50%));
+    --gradient-text: linear-gradient(135deg, hsl(175 80% 50%), hsl(200 80% 60%));
+    --shadow-glow: 0 0 40px hsl(175 80% 50% / 0.15);
+    --shadow-card: 0 4px 24px hsl(0 0% 0% / 0.3);
+
+    /* Status colors */
+    --status-active: 142 76% 50%;
+    --status-progress: 45 93% 55%;
+    --status-hold: 222 40% 50%;
+    --status-minimal: 280 60% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+
+  code, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  ::selection {
+    @apply bg-primary/30 text-foreground;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-text);
+  }
+
+  .gradient-border {
+    position: relative;
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: var(--gradient-primary);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+    -webkit-mask-composite: xor;
+    pointer-events: none;
+  }
+
+  .glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .card-elevated {
+    @apply bg-card rounded-xl border border-border;
+    box-shadow: var(--shadow-card);
+  }
+
+  .link-underline {
+    @apply relative;
+  }
+
+  .link-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300;
+  }
+
+  .link-underline:hover::after {
+    @apply w-full;
+  }
+
+  .section-heading {
+    @apply text-sm font-mono text-primary uppercase tracking-widest mb-2;
+  }
+
+  .status-badge {
+    @apply px-2 py-0.5 rounded-full text-xs font-medium font-mono;
+  }
+
+  .status-active {
+    @apply bg-[hsl(var(--status-active)/0.15)] text-[hsl(var(--status-active))];
+  }
+
+  .status-progress {
+    @apply bg-[hsl(var(--status-progress)/0.15)] text-[hsl(var(--status-progress))];
+  }
+
+  .status-hold {
+    @apply bg-[hsl(var(--status-hold)/0.15)] text-[hsl(var(--status-hold))];
+  }
+
+  .status-minimal {
+    @apply bg-[hsl(var(--status-minimal)/0.15)] text-[hsl(var(--status-minimal))];
+  }
+
+  .tech-tag {
+    @apply px-2.5 py-1 bg-secondary text-muted-foreground text-xs font-mono rounded-md 
+           border border-border hover:border-primary/50 hover:text-primary transition-all duration-200;
+  }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-up-delay-1 {
+    animation: fadeUp 0.6s ease-out 0.1s forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-up-delay-2 {
+    animation: fadeUp 0.6s ease-out 0.2s forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-up-delay-3 {
+    animation: fadeUp 0.6s ease-out 0.3s forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-up-delay-4 {
+    animation: fadeUp 0.6s ease-out 0.4s forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hover-lift {
+    @apply transition-transform duration-300 hover:-translate-y-1;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
