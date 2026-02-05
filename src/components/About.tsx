@@ -1,9 +1,9 @@
 const skills = [
-  { category: "Frontend", items: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Redux"] },
-  { category: "Backend", items: ["Node.js", "Express", "Golang", "REST APIs", "GraphQL"] },
-  { category: "Database", items: ["MongoDB", "PostgreSQL", "Redis", "Mongoose"] },
+  { category: "Frontend", items: ["React", "TypeScript", "Next.js", "Electron", "Tailwind CSS", "Redux"] },
+  { category: "Backend", items: ["Node.js", "Express", "Golang", "REST APIs"] },
+  { category: "Database", items: ["MongoDB", "Mongoose"] },
   { category: "Real-time", items: ["WebSocket", "WebRTC", "Socket.io"] },
-  { category: "DevOps", items: ["Docker", "AWS", "CI/CD", "Git"] },
+  // { category: "DevOps", items: ["Docker", "AWS", "CI/CD", "Git"] },
 ];
 
 const About = () => {
