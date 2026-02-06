@@ -17,7 +17,9 @@ const Contact = () => {
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
           <a
-            href="mailto:amirjavedmalik@gmail.com"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=amirjavedmalik2002@gmail.com&su=Hello&body=Hi Amir"
+            target="_blank"
+            rel="noopener noreferrer"
             className="group flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground 
                      rounded-lg hover:bg-primary/90 transition-all duration-300 font-medium glow"
           >
@@ -29,7 +31,9 @@ const Contact = () => {
 
         <div className="flex items-center justify-center gap-8">
           <a
-            href="mailto:amirjavedmalik@gmail.com"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=amirjavedmalik@gmail.com&su=Hello&body=Hi Amir"
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"
           >
             <div className="p-3 rounded-full bg-card border border-border group-hover:border-primary/50 transition-colors">
@@ -39,7 +43,7 @@ const Contact = () => {
           </a>
           
           <a
-            href="https://github.com"
+            href="https://github.com/MalikAmirJaved"
             target="_blank"
             rel="noopener noreferrer"
             className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"
@@ -51,7 +55,7 @@ const Contact = () => {
           </a>
           
           <a
-            href="https://linkedin.com"
+            href="https://linkedin.com/in/amir-javed-a9274b281"
             target="_blank"
             rel="noopener noreferrer"
             className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"

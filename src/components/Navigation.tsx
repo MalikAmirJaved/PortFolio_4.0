@@ -37,7 +37,6 @@ const Navigation = () => {
       <nav className="max-w-6xl mx-auto px-6 lg:px-24 h-16 flex items-center justify-between">
         {/* Logo */}
         <a
-          href="#"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="font-mono text-primary font-semibold text-lg hover:text-primary/80 transition-colors"
         >

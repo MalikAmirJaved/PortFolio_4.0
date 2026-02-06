@@ -10,14 +10,16 @@ const Footer = () => {
 
         <div className="flex items-center gap-4">
           <a
-            href="mailto:amirjavedmalik@gmail.com"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=amirjavedmalik2002@gmail.com&su=Hello&body=Hi Amir"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-muted-foreground hover:text-primary transition-colors"
             aria-label="Email"
           >
             <Mail className="w-4 h-4" />
           </a>
           <a
-            href="https://github.com"
+            href="https://github.com/MalikAmirJaved"
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-primary transition-colors"
@@ -26,7 +28,7 @@ const Footer = () => {
             <Github className="w-4 h-4" />
           </a>
           <a
-            href="https://linkedin.com"
+            href="https://linkedin.com/in/amir-javed-a9274b281"
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-primary transition-colors"

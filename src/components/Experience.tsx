@@ -12,7 +12,7 @@ const experiences = [
       "Built employee monitoring solution with WebRTC for live screen streaming and automated screenshot capture",
       "Designed scalable database schemas and RESTful APIs handling complex business logic",
     ],
-    tech: ["React", "Node.js", "MongoDB", "WebSocket", "WebRTC", "Golang"],
+    tech: ["React", "Electron", "Next.js", "Node.js", "MongoDB", "WebSocket", "WebRTC", "Golang"],
   },
   {
     title: "Full Stack Developer Intern",
