@@ -105,7 +105,7 @@ useEffect(() => {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden fixed inset-0 mt-16 z-60 bg-background/95 backdrop-blur-lg transition-transform duration-300 ${
+        className={`md:hidden fixed inset-0 mt-16 z-60 bg-background/95 backdrop-blur-lg transition-transform duration-300 h-screen overflow-hidden ${
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
