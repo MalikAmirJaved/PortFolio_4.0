@@ -69,7 +69,7 @@ const Navigation = () => {
     className="px-4 py-2 border border-primary text-primary text-sm rounded 
                hover:bg-primary/10 transition-all duration-300"
   >
-    Resume1
+    Resume
   </button>
 </li>
         </ul>
@@ -102,14 +102,22 @@ const Navigation = () => {
               </button>
             </li>
           ))}
-          <a
-  href={`${import.meta.env.BASE_URL}resumecv.pdf`}
-  download
-  className="px-4 py-2 border border-primary text-primary text-sm rounded 
-             hover:bg-primary/10 transition-all duration-300"
->
-  Resume1
-</a>
+          <li>
+  <button
+    onClick={() => {
+      const link = document.createElement("a");
+      link.href = "/resumecv.pdf"; // path in public folder
+      link.download = "resumecv.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }}
+    className="px-6 py-3 border border-primary text-primary text-sm rounded 
+               hover:bg-primary/10 transition-all duration-300"
+  >
+    Resume
+  </button>
+</li>
         </ul>
       </div>
     </header>
