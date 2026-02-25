@@ -19,12 +19,25 @@ const Navigation = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+useEffect(() => {
+  // Lock body scroll when mobile menu is open
+  if (isMobileMenuOpen) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "";
+  }
 
+  // Cleanup on unmount
+  return () => {
+    document.body.style.overflow = "";
+  };
+}, [isMobileMenuOpen]);
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
     const element = document.querySelector(href);
     element?.scrollIntoView({ behavior: "smooth" });
   };
+
 
   return (
     <header
@@ -51,27 +64,29 @@ const Navigation = () => {
                 onClick={() => handleNavClick(item.href)}
                 className="text-sm text-muted-foreground hover:text-primary transition-colors link-underline"
               >
-                <span className="font-mono text-primary text-xs mr-1">0{index + 1}.</span>
+                <span className="font-mono text-primary text-xs mr-1">
+                  0{index + 1}.
+                </span>
                 {item.label}
               </button>
             </li>
           ))}
           <li>
-  <button
-    onClick={() => {
-      const link = document.createElement("a");
-      link.href = "/resumecv.pdf"; // path in public folder
-      link.download = "resumecv.pdf";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }}
-    className="px-4 py-2 border border-primary text-primary text-sm rounded 
+            <button
+              onClick={() => {
+                const link = document.createElement("a");
+                link.href = "/resumecv.pdf"; // path in public folder
+                link.download = "resumecv.pdf";
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              }}
+              className="px-4 py-2 border border-primary text-primary text-sm rounded 
                hover:bg-primary/10 transition-all duration-300"
-  >
-    Resume
-  </button>
-</li>
+            >
+              Resume
+            </button>
+          </li>
         </ul>
 
         {/* Mobile Menu Button */}
@@ -80,13 +95,17 @@ const Navigation = () => {
           className="md:hidden p-2 text-foreground"
           aria-label="Toggle menu"
         >
-          {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {isMobileMenuOpen ? (
+            <X className="w-6 h-6" />
+          ) : (
+            <Menu className="w-6 h-6" />
+          )}
         </button>
       </nav>
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden fixed inset-0 top-16 bg-background/95 backdrop-blur-lg transition-transform duration-300 ${
+        className={`md:hidden fixed inset-0 mt-16 z-60 bg-background/95 backdrop-blur-lg transition-transform duration-300 ${
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -95,29 +114,31 @@ const Navigation = () => {
             <li key={item.href}>
               <button
                 onClick={() => handleNavClick(item.href)}
-                className="text-xl text-foreground hover:text-primary transition-colors"
+                className="text-xl text-foreground hover:text-primary transition-colors flex items-center"
               >
-                <span className="font-mono text-primary text-sm block mb-1">0{index + 1}.</span>
+                <span className="font-mono text-primary text-sm block mr-1">
+                  0{index + 1}.
+                </span>
                 {item.label}
               </button>
             </li>
           ))}
           <li>
-  <button
-    onClick={() => {
-      const link = document.createElement("a");
-      link.href = "/resumecv.pdf"; // path in public folder
-      link.download = "resumecv.pdf";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }}
-    className="px-4 py-2 border border-primary text-primary text-sm rounded 
+            <button
+              onClick={() => {
+                const link = document.createElement("a");
+                link.href = "/resumecv.pdf"; // path in public folder
+                link.download = "resumecv.pdf";
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              }}
+              className="px-4 py-2 border border-primary text-primary text-sm rounded 
                hover:bg-primary/10 transition-all duration-300"
-  >
-    Resume
-  </button>
-</li>
+            >
+              Resume
+            </button>
+          </li>
         </ul>
       </div>
     </header>
