@@ -8,8 +8,8 @@ const Hero = () => {
   return (
     <section className="min-h-screen flex flex-col justify-center px-6 lg:px-24 relative">
       {/* Background gradient effect */}
-      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/10 rounded-full blur-[128px] pointer-events-none" />
-      <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-accent/10 rounded-full blur-[128px] pointer-events-none" />
+      <div className="absolute top-12 -left-12 sm:top-1/4 sm:-left-32 w-54 h-54 sm:w-96 sm:h-96 bg-primary/10 rounded-full blur-[128px] pointer-events-none" />
+      <div className="absolute bottom-12 -right-12 sm:bottom-1/4 sm:-right-32 w-54 h-54 sm:w-96 sm:h-96 bg-accent/10 rounded-full blur-[128px] pointer-events-none" />
 
       <div className="max-w-4xl relative z-10">
         <p className="font-mono text-primary mb-4 animate-fade-up">
