@@ -57,16 +57,21 @@ const Navigation = () => {
             </li>
           ))}
           <li>
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 border border-primary text-primary text-sm rounded 
-                       hover:bg-primary/10 transition-all duration-300"
-            >
-              Resume
-            </a>
-          </li>
+  <button
+    onClick={() => {
+      const link = document.createElement("a");
+      link.href = "/resumecv.pdf"; // path in public folder
+      link.download = "resumecv.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }}
+    className="px-4 py-2 border border-primary text-primary text-sm rounded 
+               hover:bg-primary/10 transition-all duration-300"
+  >
+    Resume1
+  </button>
+</li>
         </ul>
 
         {/* Mobile Menu Button */}
