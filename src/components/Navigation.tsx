@@ -19,25 +19,24 @@ const Navigation = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-useEffect(() => {
-  // Lock body scroll when mobile menu is open
-  if (isMobileMenuOpen) {
-    document.body.style.overflow = "hidden";
-  } else {
-    document.body.style.overflow = "";
-  }
+  useEffect(() => {
+    // Lock body scroll when mobile menu is open
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
 
-  // Cleanup on unmount
-  return () => {
-    document.body.style.overflow = "";
-  };
-}, [isMobileMenuOpen]);
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
     const element = document.querySelector(href);
     element?.scrollIntoView({ behavior: "smooth" });
   };
-
 
   return (
     <header
@@ -105,41 +104,43 @@ useEffect(() => {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden fixed inset-0 mt-16 z-60 bg-background/95 backdrop-blur-lg transition-transform duration-300 h-screen overflow-hidden ${
+        className={`md:hidden fixed inset-0 top-16 z-60 bg-background/95 backdrop-blur-lg transition-transform duration-300 h-[calc(100vh-4rem)] overflow-hidden flex items-center justify-center ${
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <ul className="flex flex-col items-center justify-center h-full gap-8">
-          {navItems.map((item, index) => (
-            <li key={item.href}>
+        <div className={""}>
+          <ul className="flex flex-col  h-full gap-8">
+            {navItems.map((item, index) => (
+              <li key={item.href}>
+                <button
+                  onClick={() => handleNavClick(item.href)}
+                  className="text-xl text-foreground hover:text-primary transition-colors flex items-center"
+                >
+                  <span className="font-mono text-primary text-sm block mr-1">
+                    0{index + 1}.
+                  </span>
+                  {item.label}
+                </button>
+              </li>
+            ))}
+            <li>
               <button
-                onClick={() => handleNavClick(item.href)}
-                className="text-xl text-foreground hover:text-primary transition-colors flex items-center"
+                onClick={() => {
+                  const link = document.createElement("a");
+                  link.href = "/resumecv.pdf"; // path in public folder
+                  link.download = "resumecv.pdf";
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+                }}
+                className="px-4 py-2 border border-primary text-primary text-sm rounded 
+               hover:bg-primary/10 transition-all duration-300"
               >
-                <span className="font-mono text-primary text-sm block mr-1">
-                  0{index + 1}.
-                </span>
-                {item.label}
+                Resume
               </button>
             </li>
-          ))}
-          <li>
-            <button
-              onClick={() => {
-                const link = document.createElement("a");
-                link.href = "/resumecv.pdf"; // path in public folder
-                link.download = "resumecv.pdf";
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-              }}
-              className="px-4 py-2 border border-primary text-primary text-sm rounded 
-               hover:bg-primary/10 transition-all duration-300"
-            >
-              Resume
-            </button>
-          </li>
-        </ul>
+          </ul>
+        </div>
       </div>
     </header>
   );
